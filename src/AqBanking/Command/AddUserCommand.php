@@ -27,6 +27,10 @@ class AddUserCommand extends AbstractCommand
             . ' --tokentype=pintan'
             . ' --server=' . escapeshellcmd($user->getBank()->getHbciUrl());
 
+        if ($user->getBank()->getHbciVersion()) {
+            $shellCommand .= ' --hbciversion=' . escapeshellcmd($user->getBank()->getHbciVersion()->getVersionNumber());
+        }
+
         $result = $this->getShellCommandExecutor()->execute($shellCommand);
 
         if (self::RETURN_VAR_USER_ALREADY_EXISTS === $result->getReturnVar()) {

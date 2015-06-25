@@ -25,6 +25,14 @@ class HbciVersion
     }
 
     /**
+     * @return string
+     */
+    public function getVersionNumber()
+    {
+        return $this->versionNumber;
+    }
+
+    /**
      * @param HbciVersion $hbciVersion
      * @return bool
      */
